@@ -9,7 +9,9 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/api', (req, res) => res.status(200).json({ success: true }));
+  server.get('/api', (req, res) => res.status(200).json({
+    success: true, message: 'Welcome',
+  }));
 
   server.all('*', (req, res) => handle(req, res));
 
