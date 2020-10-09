@@ -3,6 +3,7 @@ import express from 'express';
 import api from './api';
 import './config/env';
 import './config/database';
+import debug from './config/debug';
 
 const port = parseInt(process.env.PORT || '3001', 10);
 const dev = process.env.NODE_ENV !== 'production';
@@ -20,7 +21,6 @@ app.prepare().then(() => {
   server.all('*', (req, res) => handle(req, res));
 
   server.listen(port, () => {
-    // eslint-disable-next-line no-console
-    console.log(`> Ready on http://localhost:${port}`);
+    debug.log(`> Ready on http://localhost:${port}`);
   });
 });

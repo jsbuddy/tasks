@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import './env';
+import debug from '../config/debug';
 
 if (process.env.DATABASE_URL) {
     mongoose.connect(process.env.DATABASE_URL, {
@@ -8,6 +9,6 @@ if (process.env.DATABASE_URL) {
         useCreateIndex: true,
         useFindAndModify: false
     })
-        .then(() => console.log('Database connected!'))
-        .catch((err: any) => console.log('Database connection error', err));
+        .then(() => debug.log('Database connected!'))
+        .catch((err: any) => debug.error('Database connection error', err));
 }
