@@ -1,6 +1,8 @@
 import next from 'next';
 import express from 'express';
 import api from './api';
+import './config/env';
+import './config/database';
 
 const port = parseInt(process.env.PORT || '3001', 10);
 const dev = process.env.NODE_ENV !== 'production';
