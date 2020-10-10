@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import * as ProjectService from '../../services/projects';
+import * as TaskService from '../../services/tasks';
 
 export const create = async (req: Request, res: Response) => {
     const data = await ProjectService.create(req.body);
@@ -8,6 +9,11 @@ export const create = async (req: Request, res: Response) => {
 
 export const findAll = async (_: Request, res: Response) => {
     const data = await ProjectService.findAll();
+    return res.json({ success: true, data })
+}
+
+export const findProjectTasks = async (req: Request, res: Response) => {
+    const data = await TaskService.findByProject(req.params.id);
     return res.json({ success: true, data })
 }
 
