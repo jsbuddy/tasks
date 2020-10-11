@@ -1,5 +1,5 @@
 import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, IconButton } from "@chakra-ui/core";
-import React from "react";
+import React, { RefObject } from "react";
 import axios from "axios";
 import { queryCache, useMutation } from "react-query";
 import { IProject } from "lib/types";
@@ -34,7 +34,7 @@ const DeleteProjectAlert = ({ project }: { project: IProject }) => {
 
             <AlertDialog
                 isOpen={isOpen}
-                leastDestructiveRef={cancelRef}
+                leastDestructiveRef={(cancelRef as unknown as RefObject<HTMLElement>)}
                 onClose={onClose}
             >
                 <AlertDialogOverlay />
