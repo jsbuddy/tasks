@@ -21,7 +21,7 @@
     "express-joi-validation": "^4.0.4-beta.0",
     "moment": "^2.29.1",
     "mongoose": "^5.10.9",
-    "next": "latest",
+    "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-query": "^2.23.1",
