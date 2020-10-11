@@ -92,22 +92,17 @@ const Task = ({ task }: { task: ITask }) => {
                             Low
                         </Badge>
                     }
-                    {/* <IconButton variant="ghost" variantColor="red" aria-label="delete" size="xs" icon="delete" ml="2" /> */}
                     <Menu>
-                        <MenuButton
-                            as={IconButton} variant="outline"
-                            aria-label="menu"
-                            size="xs"
-                            icon="chevron-down"
-                            ml="2"
-                        />
+                        <MenuButton ml="2">
+                            <IconButton variant="outline" aria-label="menu" size="xs" icon="chevron-down" />
+                        </MenuButton>
                         <MenuList placement="bottom-end">
                             <MenuItem onClick={onRemoveTask} color="red">Remove</MenuItem>
                         </MenuList>
                     </Menu>
                 </Flex>
             </Flex>
-        </Box>
+        </Box >
     )
 }
 
