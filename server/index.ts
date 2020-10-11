@@ -1,5 +1,6 @@
 import next from 'next';
 import express from 'express';
+import cors from 'cors';
 import api from './api';
 import './config/env';
 import './config/database';
@@ -12,6 +13,8 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
+
+  server.use(cors())
 
   server.use(express.urlencoded({ extended: false }));
   server.use(express.json());

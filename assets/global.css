@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+* {
+    font-family: 'Work Sans', sans-serif!important;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.css-c0nu9u:last-of-type {
+    border: 0;
+}
+
+button.no-shadow:focus, button.no-shadow:active {
+    box-shadow: none;
+}
