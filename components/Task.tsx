@@ -6,12 +6,12 @@ import { queryCache, useMutation } from "react-query"
 import http from "lib/http"
 
 const updateTask = async ({ id, values }: { id: string, values: IUpdateTask }) => {
-    const { data } = await http.patch(`http://localhost:3001/api/tasks/${id}`, values);
+    const { data } = await http.patch(`/api/tasks/${id}`, values);
     return data;
 }
 
 const removeTask = async (id: string) => {
-    const { data } = await http.delete(`http://localhost:3001/api/tasks/${id}`);
+    const { data } = await http.delete(`/api/tasks/${id}`);
     return data;
 }
 

@@ -5,7 +5,7 @@ import { IProject } from "lib/types";
 import http from "lib/http";
 
 const removeProject = async (id: string) => {
-    const { data } = await http.delete(`http://localhost:3001/api/projects/${id}`);
+    const { data } = await http.delete(`/api/projects/${id}`);
     return data;
 }
 

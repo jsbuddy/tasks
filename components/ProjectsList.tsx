@@ -6,7 +6,7 @@ import { IProject } from "lib/types";
 import http from "lib/http";
 
 const fetchProjects = async () => {
-    const { data } = await http.get('http://localhost:3001/api/projects');
+    const { data } = await http.get('/api/projects');
     return data.data;
 };
 

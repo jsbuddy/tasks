@@ -10,7 +10,7 @@ interface IAddTaskProps {
 }
 
 const createTask = async (payload: ICreateTask) => {
-    const { data } = await http.post('http://localhost:3001/api/tasks', payload);
+    const { data } = await http.post('/api/tasks', payload);
     return data;
 }
 

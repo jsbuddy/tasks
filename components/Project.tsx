@@ -8,7 +8,7 @@ import DeleteProjectAlert from "./DeleteProjectAlert";
 import Task from "./Task";
 
 const fetchTasks = async (_: string, { project }: { project: string }) => {
-    const { data } = await http.get(`http://localhost:3001/api/projects/${project}/tasks`);
+    const { data } = await http.get(`/api/projects/${project}/tasks`);
     return data.data;
 }
 

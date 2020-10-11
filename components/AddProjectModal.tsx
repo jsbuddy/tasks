@@ -4,7 +4,7 @@ import { queryCache, useMutation } from "react-query";
 import http from "lib/http";
 
 const createProject = async ({ name }: { name: string }) => {
-    const { data } = await http.post('http://localhost:3001/api/projects', { name });
+    const { data } = await http.post('/api/projects', { name });
     return data.data;
 }
 
