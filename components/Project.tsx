@@ -1,5 +1,5 @@
 import { AccordionHeader, Box, AccordionIcon, AccordionPanel, Button, Flex, Collapse } from "@chakra-ui/core";
-import axios from "axios";
+import http from "lib/http";
 import { IProject, ITask } from "lib/types";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
@@ -8,7 +8,7 @@ import DeleteProjectAlert from "./DeleteProjectAlert";
 import Task from "./Task";
 
 const fetchTasks = async (_: string, { project }: { project: string }) => {
-    const { data } = await axios.get(`http://localhost:3001/api/projects/${project}/tasks`);
+    const { data } = await http.get(`http://localhost:3001/api/projects/${project}/tasks`);
     return data.data;
 }
 

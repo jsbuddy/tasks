@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
-import axios from "axios";
 import { Accordion, AccordionItem, Flex, Spinner } from "@chakra-ui/core";
 import React from "react";
 import Project from "./Project";
 import { IProject } from "lib/types";
+import http from "lib/http";
 
 const fetchProjects = async () => {
-    const { data } = await axios.get('http://localhost:3001/api/projects');
+    const { data } = await http.get('http://localhost:3001/api/projects');
     return data.data;
 };
 

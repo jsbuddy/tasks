@@ -1,11 +1,11 @@
 import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, IconButton } from "@chakra-ui/core";
 import React, { RefObject } from "react";
-import axios from "axios";
 import { queryCache, useMutation } from "react-query";
 import { IProject } from "lib/types";
+import http from "lib/http";
 
 const removeProject = async (id: string) => {
-    const { data } = await axios.delete(`http://localhost:3001/api/projects/${id}`);
+    const { data } = await http.delete(`http://localhost:3001/api/projects/${id}`);
     return data;
 }
 

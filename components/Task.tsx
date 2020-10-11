@@ -1,17 +1,17 @@
 import React from "react"
 import moment from "moment"
-import axios from "axios"
 import { Box, Flex, Checkbox, Badge, Text, Spinner, Icon, IconButton, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/core"
 import { ITask, IUpdateTask } from "lib/types"
 import { queryCache, useMutation } from "react-query"
+import http from "lib/http"
 
 const updateTask = async ({ id, values }: { id: string, values: IUpdateTask }) => {
-    const { data } = await axios.patch(`http://localhost:3001/api/tasks/${id}`, values);
+    const { data } = await http.patch(`http://localhost:3001/api/tasks/${id}`, values);
     return data;
 }
 
 const removeTask = async (id: string) => {
-    const { data } = await axios.delete(`http://localhost:3001/api/tasks/${id}`);
+    const { data } = await http.delete(`http://localhost:3001/api/tasks/${id}`);
     return data;
 }
 

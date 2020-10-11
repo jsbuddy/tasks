@@ -1,5 +1,5 @@
 import { Flex, Input, Select, Button, useToast } from "@chakra-ui/core"
-import axios from "axios"
+import http from "lib/http"
 import { ICreateTask } from "lib/types"
 import React, { useState } from "react"
 import { queryCache, useMutation } from "react-query"
@@ -10,7 +10,7 @@ interface IAddTaskProps {
 }
 
 const createTask = async (payload: ICreateTask) => {
-    const { data } = await axios.post('http://localhost:3001/api/tasks', payload);
+    const { data } = await http.post('http://localhost:3001/api/tasks', payload);
     return data;
 }
 

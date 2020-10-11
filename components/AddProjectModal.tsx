@@ -1,10 +1,10 @@
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, Button, useDisclosure } from "@chakra-ui/core";
 import React, { useState } from "react";
-import axios from "axios";
 import { queryCache, useMutation } from "react-query";
+import http from "lib/http";
 
 const createProject = async ({ name }: { name: string }) => {
-    const { data } = await axios.post('http://localhost:3001/api/projects', { name });
+    const { data } = await http.post('http://localhost:3001/api/projects', { name });
     return data.data;
 }
 
