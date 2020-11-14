@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { Accordion, AccordionItem, Flex, Spinner } from "@chakra-ui/core";
+import { Accordion, AccordionItem, Flex, Spinner } from "@chakra-ui/react";
 import React from "react";
 import Project from "./Project";
 import { IProject } from "lib/types";

@@ -1,7 +1,8 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, Button, useDisclosure } from "@chakra-ui/core";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, Button, useDisclosure } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { queryCache, useMutation } from "react-query";
 import http from "lib/http";
+import { AddIcon } from "@chakra-ui/icons";
 
 const createProject = async ({ name }: { name: string }) => {
     const { data } = await http.post('/api/projects', { name });
@@ -22,7 +23,7 @@ const AddProjectModal = () => {
 
     return (
         <>
-            <Button leftIcon="add" variantColor="blue" variant="outline" onClick={onOpen}>New Project</Button>
+            <Button leftIcon={<AddIcon />} colorScheme="blue" variant="outline" onClick={onOpen}>New Project</Button>
             <Modal onClose={onClose} isOpen={isOpen}>
                 <ModalOverlay />
                 <ModalContent pb={5}>
@@ -38,7 +39,7 @@ const AddProjectModal = () => {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                             />
                         </FormControl>
-                        <Button isDisabled={name.length < 2} isLoading={isLoading} variantColor="blue" onClick={onAddProject} mt="10">Create Project</Button>
+                        <Button isDisabled={name.length < 2} isLoading={isLoading} colorScheme="blue" onClick={onAddProject} mt="10">Create Project</Button>
                     </ModalBody>
                 </ModalContent>
             </Modal>

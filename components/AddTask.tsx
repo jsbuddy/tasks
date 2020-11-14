@@ -1,4 +1,4 @@
-import { Flex, Input, Select, Button, useToast } from "@chakra-ui/core"
+import { Flex, Input, Select, Button, useToast } from "@chakra-ui/react"
 import http from "lib/http"
 import { ICreateTask } from "lib/types"
 import React, { useState } from "react"
@@ -46,7 +46,7 @@ const AddTask = ({ project, onClose }: IAddTaskProps) => {
                 ml="2"
                 size="sm"
                 value={values.priority}
-                onChange={(e) => setValues({ ...values, priority: +e.target.value })}
+                onChange={(e: any) => setValues({ ...values, priority: +e.target.value })}
             >
                 <option value="1">Low</option>
                 <option value="2">Normal</option>
@@ -61,8 +61,8 @@ const AddTask = ({ project, onClose }: IAddTaskProps) => {
                 value={values.due}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValues({ ...values, due: e.target.value })}
             />
-            <Button onClick={onAdd} isLoading={isLoading} variant="outline" variantColor="blue" ml="2" px="5" size="sm">Add</Button>
-            <Button onClick={() => onClose()} isDisabled={isLoading} variant="outline" variantColor="red" ml="2" px="8" size="sm">Cancel</Button>
+            <Button onClick={onAdd} isLoading={isLoading} variant="outline" colorScheme="blue" ml="2" px="5" size="sm">Add</Button>
+            <Button onClick={() => onClose()} isDisabled={isLoading} variant="outline" colorScheme="red" ml="2" px="8" size="sm">Cancel</Button>
         </Flex>
     )
 }

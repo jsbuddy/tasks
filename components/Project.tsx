@@ -1,4 +1,5 @@
-import { AccordionHeader, Box, AccordionIcon, AccordionPanel, Button, Flex, Collapse } from "@chakra-ui/core";
+import { AddIcon } from "@chakra-ui/icons";
+import { AccordionButton, Box, AccordionIcon, AccordionPanel, Button, Flex, Collapse } from "@chakra-ui/react";
 import http from "lib/http";
 import { IProject, ITask } from "lib/types";
 import React, { useState } from "react";
@@ -18,21 +19,23 @@ const Project = ({ project }: { project: IProject }) => {
 
     return (
         <>
-            <AccordionHeader rounded="5px" py="4" className="no-shadow">
+            <AccordionButton rounded="5px" py="4" className="no-shadow">
                 <Box flex="1" textAlign="left">
                     {project.name}
                 </Box>
                 <AccordionIcon />
-            </AccordionHeader>
+            </AccordionButton>
             <AccordionPanel pb={4}>
                 <Flex justify="space-between">
-                    <Button onClick={() => setShowAdd(v => !v)} variant="outline" variantColor="blue" size="xs" px="3" leftIcon="add">Add Task</Button>
+                    <Button onClick={() => setShowAdd(v => !v)} variant="outline" colorScheme="blue" size="xs" px="3" leftIcon={<AddIcon />}>Add Task</Button>
                     <Box>
                         <DeleteProjectAlert project={project} />
                     </Box>
                 </Flex>
-                <Collapse isOpen={showAdd} pt="4">
-                    <AddTask project={project} onClose={() => setShowAdd(false)} />
+                <Collapse in={showAdd}>
+                    <Box pt="4">
+                        <AddTask project={project} onClose={() => setShowAdd(false)} />
+                    </Box>
                 </Collapse>
                 {
                     data && data.length > 0 &&

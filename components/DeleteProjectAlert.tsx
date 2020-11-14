@@ -1,8 +1,9 @@
-import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, IconButton } from "@chakra-ui/core";
+import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, IconButton } from "@chakra-ui/react";
 import React, { RefObject } from "react";
 import { queryCache, useMutation } from "react-query";
 import { IProject } from "lib/types";
 import http from "lib/http";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 const removeProject = async (id: string) => {
     const { data } = await http.delete(`/api/projects/${id}`);
@@ -25,16 +26,16 @@ const DeleteProjectAlert = ({ project }: { project: IProject }) => {
             <IconButton
                 onClick={() => setIsOpen(true)}
                 variant="outline"
-                variantColor="red"
+                colorScheme="red"
                 aria-label="Delete"
-                icon="delete"
+                icon={<DeleteIcon />}
                 size="xs"
                 mr="2"
             />
 
             <AlertDialog
                 isOpen={isOpen}
-                leastDestructiveRef={(cancelRef as unknown as RefObject<HTMLElement>)}
+                leastDestructiveRef={(cancelRef.current as unknown as RefObject<HTMLElement>)}
                 onClose={onClose}
             >
                 <AlertDialogOverlay />
@@ -48,10 +49,10 @@ const DeleteProjectAlert = ({ project }: { project: IProject }) => {
                     </AlertDialogBody>
 
                     <AlertDialogFooter>
-                        <Button ref={cancelRef} onClick={onClose}>
+                        <Button ref={cancelRef.current} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button variantColor="red" onClick={onRemoveTask} ml={3} isLoading={removing}>
+                        <Button colorScheme="red" onClick={onRemoveTask} ml={3} isLoading={removing}>
                             Delete
                         </Button>
                     </AlertDialogFooter>
