@@ -1,7 +1,8 @@
 import Joi from "@hapi/joi";
 
 export const createProjectSchema = Joi.object({
-    name: Joi.string().trim().required()
+    name: Joi.string().trim().required(),
+    deadline: Joi.string().trim(),
 })
 
 export const createTaskSchema = Joi.object({
@@ -16,5 +17,5 @@ export const updateTaskSchema = Joi.object({
     due: Joi.string().trim(),
     priority: Joi.number().integer().valid(1, 2, 3, 4),
     project: Joi.string().trim(),
-    completed: Joi.boolean()
+    completed: Joi.boolean(),
 })

@@ -5,6 +5,11 @@ const schema = new Schema({
         type: String,
         required: true,
     },
+    deadline: {
+        type: String,
+        required: true,
+        default: ''
+    }
 }, { timestamps: true })
 
 export default mongoose.model('Project', schema);

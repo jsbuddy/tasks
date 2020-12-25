@@ -1,7 +1,8 @@
 import Project from '../models/project';
 
 interface IProject {
-    name: String
+    name: String,
+    deadline?: String
 }
 
 export const create = (data: IProject) => {
