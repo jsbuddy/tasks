@@ -3,21 +3,21 @@ import React, { useState } from "react";
 import { queryCache, useMutation } from "react-query";
 import http from "lib/http";
 import { AddIcon } from "@chakra-ui/icons";
+import { ICreateProject } from "lib/types";
 
-const createProject = async ({ name }: { name: string }) => {
-    const { data } = await http.post('/api/projects', { name });
+const createProject = async (values: ICreateProject) => {
+    const { data } = await http.post('/api/projects', values);
     return data.data;
 }
 
 const AddProjectModal = () => {
-    const [name, setName] = useState('');
+    const [values, setValues] = useState<ICreateProject>({ name: '', deadline: '' });
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [create, { isLoading }] = useMutation(createProject)
 
     const onAddProject = async () => {
-        await create({ name });
+        await create(values);
         queryCache.invalidateQueries('projects');
-        setName('');
         onClose();
     }
 
@@ -35,11 +35,20 @@ const AddProjectModal = () => {
                             <Input
                                 type="text"
                                 id="name"
-                                value={name}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                                value={values.name}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValues({ ...values, name: e.target.value })}
                             />
                         </FormControl>
-                        <Button isDisabled={name.length < 2} isLoading={isLoading} colorScheme="blue" onClick={onAddProject} mt="10">Create Project</Button>
+                        <FormControl mt="3">
+                            <FormLabel htmlFor="name">Deadline</FormLabel>
+                            <Input
+                                type="date"
+                                placeholder="Deadline"
+                                value={values.deadline}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValues({ ...values, deadline: e.target.value })}
+                            />
+                        </FormControl>
+                        <Button isDisabled={values.name.length < 2} isLoading={isLoading} colorScheme="blue" onClick={onAddProject} mt="10">Create Project</Button>
                     </ModalBody>
                 </ModalContent>
             </Modal>

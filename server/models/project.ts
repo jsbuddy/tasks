@@ -7,8 +7,7 @@ const schema = new Schema({
     },
     deadline: {
         type: String,
-        required: true,
-        default: ''
+        required: false,
     }
 }, { timestamps: true })
 

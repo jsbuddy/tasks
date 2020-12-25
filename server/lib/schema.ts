@@ -2,7 +2,7 @@ import Joi from "@hapi/joi";
 
 export const createProjectSchema = Joi.object({
     name: Joi.string().trim().required(),
-    deadline: Joi.string().trim(),
+    deadline: Joi.string().trim().allow(''),
 })
 
 export const createTaskSchema = Joi.object({

@@ -19,6 +19,11 @@ export interface ICreateTask {
     project?: string,
 }
 
+export interface ICreateProject {
+    name: string,
+    deadline?: string
+}
+
 export interface IUpdateTask {
     name?: string,
     due?: string,
