@@ -19,5 +19,6 @@ export const findProjectTasks = async (req: Request, res: Response) => {
 
 export const remove = async (req: Request, res: Response) => {
     const data = await ProjectService.remove(req.params.id);
+    TaskService.removeByProject(req.params.id);
     return res.json({ success: true, data })
 }

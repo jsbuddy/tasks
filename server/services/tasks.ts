@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Task from "../models/task";
 
 interface ITask {
@@ -27,4 +28,8 @@ export const update = (id: string, data: IUpdateTask) => {
 
 export const remove = (id: string) => {
     return Task.findByIdAndRemove(id);
+}
+
+export const removeByProject = (project: string) => {
+    return Task.deleteMany({ project: mongoose.Types.ObjectId(project) });
 }
