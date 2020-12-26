@@ -16,8 +16,7 @@ const AddProjectModal = () => {
     const [create, { isLoading }] = useMutation(createProject)
 
     const onAddProject = async () => {
-        const deadline = values.deadline ? new Date(values.deadline).toISOString() : ''
-        await create({ ...values, deadline });
+        await create({ ...values });
         queryCache.invalidateQueries('projects');
         onClose();
     }
