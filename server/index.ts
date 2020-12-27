@@ -1,6 +1,7 @@
 import next from 'next';
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import api from './api';
 import './config/env';
 import './config/database';
@@ -15,6 +16,7 @@ app.prepare().then(() => {
   const server = express();
 
   server.use(cors())
+  server.use(morgan('tiny'))
 
   server.use(express.urlencoded({ extended: false }));
   server.use(express.json());
