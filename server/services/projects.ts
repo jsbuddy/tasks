@@ -5,8 +5,12 @@ interface IProject {
     deadline?: String
 }
 
-export const create = (data: IProject) => {
-    return Project.create(data);
+export const create = async (data: IProject) => {
+    const project = await Project.create(data)
+    return project
+        .populate('completedTasksCount')
+        .populate('pendingTasksCount')
+        .execPopulate();
 }
 
 export const find = (id: string) => {
