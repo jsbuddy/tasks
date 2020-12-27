@@ -10,7 +10,9 @@ export const create = (data: IProject) => {
 }
 
 export const findAll = () => {
-    return Project.find();
+    return Project.find()
+        .populate('completedTasksCount')
+        .populate('pendingTasksCount');
 }
 
 export const remove = (id: String) => {
