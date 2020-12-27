@@ -9,6 +9,12 @@ export const create = (data: IProject) => {
     return Project.create(data);
 }
 
+export const find = (id: string) => {
+    return Project.findById(id)
+        .populate('completedTasksCount')
+        .populate('pendingTasksCount');
+}
+
 export const findAll = () => {
     return Project.find()
         .populate('completedTasksCount')

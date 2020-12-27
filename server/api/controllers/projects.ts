@@ -7,6 +7,12 @@ export const create = async (req: Request, res: Response) => {
     return res.json({ success: true, data })
 }
 
+export const find = async (req: Request, res: Response) => {
+    const data = await ProjectService.find(req.params.id);
+    console.log(req.params.id, { data });
+    return res.json({ success: true, data })
+}
+
 export const findAll = async (_: Request, res: Response) => {
     const data = await ProjectService.findAll();
     return res.json({ success: true, data })

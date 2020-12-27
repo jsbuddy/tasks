@@ -8,6 +8,7 @@ const validator = createValidator()
 
 router.post('/', validator.body(createProjectSchema), controller.create);
 router.get('/', controller.findAll);
+router.get('/:id/', controller.find);
 router.get('/:id/tasks', controller.findProjectTasks);
 router.delete('/:id', controller.remove);
 
