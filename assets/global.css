@@ -12,6 +12,11 @@
     border: 0;
 }
 
-button.no-shadow:focus, button.no-shadow:active {
+button.no-shadow:focus,
+button.no-shadow:active {
     box-shadow: none;
+}
+
+button {
+    outline: none
 }

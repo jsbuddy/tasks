@@ -1,6 +1,11 @@
 export interface IProject {
     _id: string,
-    name: string
+    name: string,
+    deadline: string,
+    pendingTasksCount: number,
+    completedTasksCount: number,
+    createdAt: string,
+    updatedAt: string
 }
 
 export interface ITask {

@@ -4,6 +4,7 @@ import { queryCache, useMutation } from "react-query";
 import { IProject } from "lib/types";
 import http from "lib/http";
 import { DeleteIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 
 const removeProject = async (id: string) => {
     const { data } = await http.delete(`/api/projects/${id}`);
@@ -11,6 +12,7 @@ const removeProject = async (id: string) => {
 }
 
 const DeleteProjectAlert = ({ project }: { project: IProject }) => {
+    const router = useRouter()
     const [isOpen, setIsOpen] = React.useState(false);
     const onClose = () => setIsOpen(false);
     const cancelRef = React.useRef();
@@ -19,19 +21,19 @@ const DeleteProjectAlert = ({ project }: { project: IProject }) => {
     const onRemoveTask = async () => {
         await remove(project._id)
         queryCache.invalidateQueries('projects');
+        router.back();
     }
 
     return (
         <>
-            <IconButton
+            <Button
                 onClick={() => setIsOpen(true)}
                 variant="outline"
                 colorScheme="red"
                 aria-label="Delete"
-                icon={<DeleteIcon />}
-                size="xs"
-                mr="2"
-            />
+                leftIcon={<DeleteIcon />}
+                size="sm"
+            >Delete project</Button>
 
             <AlertDialog
                 isOpen={isOpen}

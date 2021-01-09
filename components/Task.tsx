@@ -32,12 +32,11 @@ const Task = ({ task }: { task: ITask }) => {
 
     return (
         <Box
-            borderColor="rgba(255, 255, 255, .1)"
-            borderWidth="1px"
-            borderStyle="solid"
-            rounded="5px"
-            mt="2"
-            p="4"
+            rounded="6px"
+            backgroundColor="gray.700"
+            mt="4"
+            px="5"
+            py="6"
             key={task._id}
         >
             <Flex align="center" justify="space-between">
