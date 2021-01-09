@@ -45,7 +45,7 @@ const ProjectsList = () => {
                                 pb="8"
                                 onClick={() => { router.push(`/project/${project._id}`) }}
                             >
-                                <Text fontWeight="bold" fontSize="md">{project.name}</Text>
+                                <Text fontWeight="600" fontSize="md">{project.name}</Text>
                                 <Flex justifyContent="space-between" alignItems="center">
                                     <Text color="darkgrey" fontSize="sm">{project.deadline || "No deadline"}</Text>
                                     <Tag size="sm">{completedTasksCount}/{totalTasks}</Tag>
