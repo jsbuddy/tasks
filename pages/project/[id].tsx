@@ -14,7 +14,6 @@ const Default = () => {
     const router = useRouter()
     const { id } = router.query
     const { data, isLoading: loading } = useQuery(['projects', id], fetchProjects);
-    console.log({ loading, data });
 
     if (loading) return (
         <Flex justify="center" align="center" py="10" my="10">
