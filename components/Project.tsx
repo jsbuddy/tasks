@@ -1,5 +1,5 @@
 import { AddIcon, ArrowBackIcon } from "@chakra-ui/icons";
-import { Box, Button, Flex, Collapse, Text, Tab, TabList, TabPanel, TabPanels, Tabs, Container } from "@chakra-ui/react";
+import { Box, Button, Flex, Collapse, Text, Tab, TabList, TabPanel, TabPanels, Tabs, Container, Badge } from "@chakra-ui/react";
 import http from "lib/http";
 import { IProject, ITask } from "lib/types";
 import { useRouter } from "next/router";
@@ -19,10 +19,17 @@ const Project = ({ project }: { project: IProject }) => {
     const [showAdd, setShowAdd] = useState(false);
     const { data } = useQuery(['tasks', { project: project._id }], fetchTasks);
 
+    if (!data) return <></>
+
+    const pending: [] = data.filter((t: ITask) => !t.completed);
+    const completed: [] = data.filter((t: ITask) => t.completed);
+
     return (
         <Tabs>
             <Box
                 pt="10"
+                backgroundColor="rgba(0, 0, 0, .2)"
+                borderBottom="1px solid rgba(255, 255, 255, .05)"
             >
                 <Container maxW="lg">
                     <Flex justify="space-between" mb="10">
@@ -31,13 +38,13 @@ const Project = ({ project }: { project: IProject }) => {
                             <DeleteProjectAlert project={project} />
                         </Box>
                     </Flex>
-                    <Text fontSize="4xl" fontWeight="600" maxWidth="500px">
+                    <Text fontSize="2xl" fontWeight="600" maxWidth="500px">
                         {project.name}
                     </Text>
 
-                    <TabList mt="10">
-                        <Tab px="0" fontWeight="500" mr="6">Pending</Tab>
-                        <Tab px="0" fontWeight="500" mr="6">Completed</Tab>
+                    <TabList mt="10" border="0" mb="1">
+                        <Tab px="0" fontWeight="500" mr="6">Pending <Badge ml="2" variant="subtle">{pending.length}</Badge></Tab>
+                        <Tab px="0" fontWeight="500" mr="6">Completed <Badge ml="2" variant="subtle">{completed.length}</Badge></Tab>
                     </TabList>
                 </Container>
             </Box>
@@ -55,7 +62,7 @@ const Project = ({ project }: { project: IProject }) => {
                             data && data.length > 0 &&
                             <Box mt="5">
                                 {
-                                    data.filter((t: ITask) => !t.completed).map((task: ITask) => <Task key={task._id} task={task} />)
+                                    pending.map((task: ITask) => <Task key={task._id} task={task} />)
                                 }
                             </Box>
                         }
@@ -65,7 +72,7 @@ const Project = ({ project }: { project: IProject }) => {
                             data && data.length > 0 &&
                             <Box mt="5">
                                 {
-                                    data.filter((t: ITask) => t.completed).map((task: ITask) => <Task key={task._id} task={task} />)
+                                    completed.map((task: ITask) => <Task key={task._id} task={task} />)
                                 }
                             </Box>
                         }
