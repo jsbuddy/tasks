@@ -1,4 +1,4 @@
-import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, IconButton } from "@chakra-ui/react";
+import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from "@chakra-ui/react";
 import React, { RefObject } from "react";
 import { queryCache, useMutation } from "react-query";
 import { IProject } from "lib/types";

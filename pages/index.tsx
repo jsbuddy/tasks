@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Flex, Heading } from '@chakra-ui/react';
+import { Container, Flex, Heading } from '@chakra-ui/react';
 import AddProjectModal from 'components/AddProjectModal';
 import ProjectsList from 'components/ProjectsList';
 

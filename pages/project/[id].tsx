@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import http from "lib/http";
 import { useQuery } from 'react-query';
 import React from 'react';
-import { Box, Flex, Spinner } from '@chakra-ui/react';
+import { Flex, Spinner } from '@chakra-ui/react';
 import Project from "../../components/Project";
 
 const fetchProjects = async (_: string, id: string) => {

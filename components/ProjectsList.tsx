@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { Accordion, AccordionItem, Text, Box, Flex, Grid, Spinner, Progress, Tag, SimpleGrid } from "@chakra-ui/react";
+import { Text, Box, Flex, Spinner, Progress, Tag, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { IProject } from "lib/types";
 import http from "lib/http";

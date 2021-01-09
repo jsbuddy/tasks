@@ -1,5 +1,5 @@
 import { AddIcon, ArrowBackIcon } from "@chakra-ui/icons";
-import { Box, Button, Flex, Collapse, Text, Tab, TabList, TabPanel, TabPanels, Tabs, Container, IconButton } from "@chakra-ui/react";
+import { Box, Button, Flex, Collapse, Text, Tab, TabList, TabPanel, TabPanels, Tabs, Container } from "@chakra-ui/react";
 import http from "lib/http";
 import { IProject, ITask } from "lib/types";
 import { useRouter } from "next/router";
