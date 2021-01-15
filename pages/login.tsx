@@ -32,7 +32,9 @@ const Login = () => {
             authenticate({ user: data!.data, token: data?.token })
             router.replace('/');
         } catch (error) {
-            toast({ title: error.response.data.message || 'An error occured, please try again', status: "error" });
+            const _default = 'An error occured, please try again';
+            if (typeof error.response.data == 'string') toast({ title: error.response.data || _default, status: "error" });
+            else toast({ title: error.response.data.message || _default, status: "error" });
         }
     }
 
@@ -40,8 +42,8 @@ const Login = () => {
         <>
             <Container maxW="xl" py="10" height="100vh">
                 <Flex alignItems="center" minH="100%">
-                    <SimpleGrid columns={2} spacing={10} width="100%">
-                        <Flex flexDirection="column" alignItems="center" justifyContent="center">
+                    <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} width="100%">
+                        <Flex flexDirection="column" alignItems="center" justifyContent="center" py="10">
                             <CompletedTasks width={350} />
                             <Box height="70px" />
                             <Heading size="lg">Work anywhere easily</Heading>

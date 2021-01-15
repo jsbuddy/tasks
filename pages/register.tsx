@@ -16,7 +16,7 @@ const registerUser = async (values: IRegister): Promise<IAuthResponse> => {
 }
 
 const Register = () => {
-    const [register, { isLoading }] = useMutation<IAuthResponse, unknown, IRegister>(registerUser)
+    const [register, { isLoading }] = useMutation<IAuthResponse, unknown, IRegister>(registerUser, { throwOnError: true })
     const [values, setValues] = useState<IRegister>({ name: '', email: '', password: '', confirmPassword: '' })
     const toast = useToast();
     const { authenticate } = useAuth();
@@ -29,17 +29,23 @@ const Register = () => {
         }, true);
         if (!valid) return toast({ title: "All fields are required", status: "error" });
         if (values.confirmPassword !== values.password) return toast({ title: "Passwords do not match", status: "error" });
-        const data = await register(values);
-        if (data?.data) authenticate({ user: data?.data, token: data?.token })
-        router.replace('/');
+        try {
+            const data = await register(values);
+            authenticate({ user: data!.data, token: data?.token })
+            router.replace('/');
+        } catch (error) {
+            const _default = 'An error occured, please try again';
+            if (typeof error.response.data == 'string') toast({ title: error.response.data || _default, status: "error" });
+            else toast({ title: error.response.data.message || _default, status: "error" });
+        }
     }
 
     return (
         <>
             <Container maxW="xl" py="10" height="100vh">
                 <Flex alignItems="center" minH="100%">
-                    <SimpleGrid columns={2} spacing={10} width="100%">
-                        <Flex flexDirection="column" alignItems="center" justifyContent="center">
+                    <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} width="100%">
+                        <Flex flexDirection="column" alignItems="center" justifyContent="center" py="10">
                             <CompletedTasks width={350} />
                             <Box height="70px" />
                             <Heading size="lg">Work anywhere easily</Heading>
