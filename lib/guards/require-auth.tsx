@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from "react";
 
 export function requireAuth(Component: React.FC) {
-    console.log('Requiring Auth')
     return () => {
         const { authenticated, resolved } = useAuth()
         const router = useRouter()
