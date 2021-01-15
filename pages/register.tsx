@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Input, SimpleGrid, Stack, Text, Image, Spacer, useToast, Link } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Input, SimpleGrid, Stack, Text, Spacer, useToast, Link } from '@chakra-ui/react'
 import CompletedTasks from 'components/svgs/CompletedTasks'
 import { useAuth } from 'lib/hooks/auth'
 import http from 'lib/http'
