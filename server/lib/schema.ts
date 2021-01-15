@@ -19,3 +19,14 @@ export const updateTaskSchema = Joi.object({
     project: Joi.string().trim(),
     completed: Joi.boolean(),
 })
+
+export const createUserSchema = Joi.object({
+    name: Joi.string().trim().required(),
+    email: Joi.string().trim().email().lowercase().required(),
+    password: Joi.string().min(8).required(),
+})
+
+export const loginUserSchema = Joi.object({
+    email: Joi.string().trim().email().required(),
+    password: Joi.string().min(8).required(),
+})

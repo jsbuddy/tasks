@@ -1,35 +1,22 @@
 import mongoose from "mongoose";
-import Task from "../models/task";
+import TaskModel, { Task } from "../models/task";
 
-interface ITask {
-    name: String,
-    due: Date,
-    priority: Number,
-    project: String
+export const create = (data: Task) => {
+    return TaskModel.create(data);
 }
 
-interface IUpdateTask {
-    name?: String,
-    due?: Date,
-    priority?: Number,
+export const findByProject = (project: string, user: string) => {
+    return TaskModel.find({ project, user });
 }
 
-export const create = (data: ITask) => {
-    return Task.create(data);
+export const update = (id: string, user: string, data: Task) => {
+    return TaskModel.findOneAndUpdate({ _id: id, user }, data, { new: true });
 }
 
-export const findByProject = (project: string) => {
-    return Task.find({ project });
+export const remove = (id: string, user: string) => {
+    return TaskModel.findOneAndRemove({ _id: id, user });
 }
 
-export const update = (id: string, data: IUpdateTask) => {
-    return Task.findByIdAndUpdate(id, data, { new: true });
-}
-
-export const remove = (id: string) => {
-    return Task.findByIdAndRemove(id);
-}
-
-export const removeByProject = (project: string) => {
-    return Task.deleteMany({ project: mongoose.Types.ObjectId(project) });
+export const removeByProject = (project: string, user: string) => {
+    return TaskModel.deleteMany({ project: mongoose.Types.ObjectId(project), user });
 }

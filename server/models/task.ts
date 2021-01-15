@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Document, Schema, Types } from "mongoose";
 
 const schema = new Schema({
     name: {
@@ -22,7 +22,26 @@ const schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Project',
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 }, { timestamps: true })
 
-export default mongoose.model('Task', schema);
+export interface Task {
+    name: string;
+    priority: number;
+    completed: boolean;
+    due: Date;
+    project: Types.ObjectId;
+    user: Types.ObjectId;
+}
+
+interface TaskBaseDocument extends Task, Document {
+}
+
+export interface TaskDocument extends TaskBaseDocument { }
+
+export default mongoose.model<TaskDocument>('Task', schema);
