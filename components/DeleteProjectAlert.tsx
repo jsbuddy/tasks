@@ -39,6 +39,7 @@ const DeleteProjectAlert = ({ project }: { project: IProject }) => {
                 isOpen={isOpen}
                 leastDestructiveRef={(cancelRef.current as unknown as RefObject<HTMLElement>)}
                 onClose={onClose}
+                isCentered
             >
                 <AlertDialogOverlay />
                 <AlertDialogContent>

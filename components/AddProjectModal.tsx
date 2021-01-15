@@ -36,7 +36,7 @@ const AddProjectModal = () => {
                 <AddIcon color="grey" />
                 <Text color="grey" fontWeight="600" fontSize="md" mt="1">New project</Text>
             </Box>
-            <Modal onClose={onClose} isOpen={isOpen}>
+            <Modal onClose={onClose} isOpen={isOpen} isCentered>
                 <ModalOverlay />
                 <ModalContent pb={5}>
                     <ModalHeader>New Project</ModalHeader>
