@@ -4,6 +4,7 @@ import React from "react";
 import { IProject } from "lib/types";
 import http from "lib/http";
 import { useRouter } from "next/router";
+import AddProjectModal from "./AddProjectModal";
 
 const fetchProjects = async () => {
     const { data } = await http.get('/api/projects');
@@ -23,6 +24,7 @@ const ProjectsList = () => {
     if (data) return (
         <>
             <SimpleGrid my="10" columns={[1, 3]} gap={6}>
+                <AddProjectModal />
                 {
                     data.map((project: IProject) => {
                         const { pendingTasksCount, completedTasksCount } = project;

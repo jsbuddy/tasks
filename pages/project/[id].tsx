@@ -4,13 +4,14 @@ import { useQuery } from 'react-query';
 import React from 'react';
 import { Flex, Spinner } from '@chakra-ui/react';
 import Project from "../../components/Project";
+import { requireAuth } from 'lib/guards/require-auth';
 
 const fetchProjects = async (_: string, id: string) => {
     const { data } = await http.get(`/api/projects/${id}`);
     return data.data;
 };
 
-const Default = () => {
+const ProjectDetails = () => {
     const router = useRouter()
     const { id } = router.query
     const { data, isLoading: loading } = useQuery(['projects', id], fetchProjects);
@@ -27,8 +28,7 @@ const Default = () => {
         )
     }
 
-    return ''
-
+    return <></>
 }
 
-export default Default
+export default requireAuth(ProjectDetails)

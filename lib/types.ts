@@ -35,3 +35,27 @@ export interface IUpdateTask {
     priority?: number,
     completed?: boolean
 }
+
+export interface IUser {
+    _id: string,
+    name: string,
+    email: string
+}
+
+export interface IRegister {
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}
+
+export interface ILogin {
+    email: string,
+    password: string
+}
+
+export interface IAuthResponse {
+    data: IUser,
+    token: string,
+    success: boolean
+}

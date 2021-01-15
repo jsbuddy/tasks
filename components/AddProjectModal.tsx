@@ -1,4 +1,4 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, Button, useDisclosure } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, Button, useDisclosure, Box, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { queryCache, useMutation } from "react-query";
 import http from "lib/http";
@@ -23,7 +23,19 @@ const AddProjectModal = () => {
 
     return (
         <>
-            <Button leftIcon={<AddIcon />} colorScheme="blue" variant="outline" onClick={onOpen}>New Project</Button>
+            <Box
+                textAlign="center"
+                as="button"
+                rounded="5px"
+                border="2px dashed rgba(255, 255, 255, .1)"
+                px="5"
+                pt="6"
+                pb="8"
+                onClick={onOpen}
+            >
+                <AddIcon color="grey" />
+                <Text color="grey" fontWeight="600" fontSize="md" mt="1">New project</Text>
+            </Box>
             <Modal onClose={onClose} isOpen={isOpen}>
                 <ModalOverlay />
                 <ModalContent pb={5}>
